@@ -38,6 +38,8 @@ jspm_packages/
 express_server/node_modules/
 express_server/.idea/
 .idea
+front-end/node_modules/
+front-end/.idea
 
 # TypeScript v1 declaration files
 typings/

@@ -1,8 +1,8 @@
 module.exports = mongoose => {
     let schema = mongoose.Schema(
         {
-            latitude:  String,
-            longitude: String,
+            latitude:  Number,
+            longitude: Number,
             date: Number,
         },
         { timestamps: true }

@@ -27,7 +27,7 @@ exports.create = (req, res) => {
     position
         .save(position)
         .then(data => {
-            res.send(data);
+            res.status(201).json(data);
         })
         .catch(err => {
             res.status(500).send({
@@ -45,7 +45,6 @@ exports.findAll = (req, res) => {
         from = new Date(req.query.from).getTime() || 0;
         to = new Date(req.query.to).getTime() || new Date().getTime();
     }
-    console.log(from, to);
 
     // let filterDate = {
     //     $function:
@@ -113,7 +112,7 @@ exports.update = (req, res) => {
                 res.status(404).send({
                     message: `Cannot update Position with id=${id}. Maybe Position was not found!`
                 });
-            } else res.send({message: "Position was updated successfully."});
+            } else res.status(201).json(data);
         })
         .catch(err => {
             res.status(500).send({
