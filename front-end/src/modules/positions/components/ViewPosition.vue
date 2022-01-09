@@ -7,15 +7,17 @@
   />
   <Position 
     :position="position"
+    class="mb-10"
     itemClass="flex justify-between"
     @edit-pos="editMode = !editMode"
+    @delete-pos="deletePosition"
   />
   <PositionForm 
     v-if="editMode"
   />
   <GoogleMap
     class="view-pos"
-    :zoom="10"
+    :zoom="15"
     v-if="!loading && !editMode"
     :center="center"
   />
@@ -68,7 +70,12 @@ export default {
     },
     dateToStirng(date) {
       return new Date(date).toLocaleDateString('ro-Ro', this.options)
-    }
+    },
+    async deletePosition(id) {
+      await positionApi.deletePosition(id);
+      this.$success('The position was successfully deleted')
+      await this.$router.push('/');
+    },
   },
   async created() {
     await this.getPosition(this.id);

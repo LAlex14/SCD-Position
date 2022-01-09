@@ -4,14 +4,18 @@
     bg-color="bg-white"
     icon-width="w-14"
     full-box
-    h-screen
   />
-  <Position
-    v-for="position in positions"
-    :position="position"
-    itemClass="flex justify-between"
-    @delete-pos="deletePosition"
-  />
+  <div class="gap-10 flex flex-wrap justify-center items-center">
+    <Position
+      v-for="position in positions"
+      :position="position"
+      itemClass="flex justify-between"
+      @delete-pos="deletePosition"
+    />
+  </div>
+  <div v-if="!positions.length">
+    There are no added positions
+  </div>
 </template>
 
 <script>

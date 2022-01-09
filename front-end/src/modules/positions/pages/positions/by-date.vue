@@ -5,12 +5,26 @@
     icon-width="w-14"
     full-box
   />
-  <DatesForm @get-positions="getPositions"/>
+  <div class="absolute top-4 right-4">
+    <BaseButton
+      label="View all"
+      size="sm"
+      variant="secondary"
+      @click="getPositions(_, true)"
+    />
+  </div>
+  <DatesForm @get-positions="getPositions" ref="datesForm"/>
   <GoogleMap
-    v-if="!loading"
+    v-if="!loading && markers.length"
     :center="center"
     :markers="markers"
   />
+  <div 
+    v-if="!markers.length"
+    class="w-full text-center"
+  >
+    There are no positions
+  </div>
 </template>
 
 <script>
@@ -26,7 +40,7 @@ export default {
   data() {
     return {
       center: { lat: 51.093048, lng: 40.84212 },
-      markers: null,
+      markers: [],
       loading: false,
     };
   },
@@ -36,7 +50,7 @@ export default {
     }
   },
   methods: {
-    async getPositions(dates) {
+    async getPositions(dates, resetDates) {
       console.log(dates);
       this.loading = true;
       let positions = await positionApi.getPositions(dates);
@@ -46,6 +60,12 @@ export default {
           lng: position.longitude
         }
       }))
+      if(resetDates) {
+        this.$refs.datesForm.dates = {
+          from: null,
+          to: null
+        };
+      }
       console.log(this.markers);
       this.loading = false;
     }
@@ -55,3 +75,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.main-class.positions-by-date {
+  @apply relative;
+}
+</style>

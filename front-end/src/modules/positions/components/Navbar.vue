@@ -54,7 +54,8 @@ export default {
   methods: {
     async onDeleteAll() {
       await positionApi.deletePositions();
-      this.$router.go(0);
+      await this.$router.push('/');
+      this.$success('The positions was successfully deleted')
     },
     swithCreateMode() {
       if (this.isCreateMode)

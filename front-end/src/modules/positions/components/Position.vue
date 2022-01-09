@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mx-5 mb-10 border-2 border-gray-400"
+    class="border-2 border-gray-400"
     :key="position.id"
   >
     <div 
