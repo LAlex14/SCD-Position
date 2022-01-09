@@ -1,16 +1,16 @@
 <template>
   <loader-icon class="spin-animation"
-    :class="{
-      'h-4 w-4': size === 'xs',
-      'h-5 w-5': size === 'sm',
-      'h-5 w-5': !['xs', 'sm'].includes(size),
-    }"
-  />
+               :class="{
+                 'h-4 w-4': size === 'xs',
+                 'h-5 w-5': size === 'sm',
+                 'h-5 w-5': !['xs', 'sm'].includes(size),
+               }"/>
 </template>
-<script>
+<script lang="ts">
 import { LoaderIcon } from '@zhuowenli/vue-feather-icons'
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   components: {
     LoaderIcon,
   },
@@ -20,7 +20,7 @@ export default {
       default: 'md'
     }
   }
-}
+})
 </script>
 <style>
 </style>

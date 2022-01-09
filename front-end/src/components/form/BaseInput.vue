@@ -1,4 +1,5 @@
 <template>
+
   <FormItem v-bind="allAttributes">
     <!--Pass through all slots to FormItem-->
     <template v-for="(_, name) in $slots" v-slot:[name]="slotData">
@@ -10,8 +11,7 @@
         handleBlur, 
         inputValue,
         errorMessage,
-        handleChange,
-        hasSuffix, 
+        handleChange, 
       }"
     >
       <slot>
@@ -19,18 +19,13 @@
           v-bind="$attrs"
           :value="inputValue"
           :type="type"
-          :key="key"
           :name="name || label"
           :class="{
             'form-input-error': errorMessage,
             'pl-8': $slots.prefix,
-            'pr-8': hasSuffix,
-            'pr-12': hasSuffix && type === 'number',
             'bg-gray-100 dark:bg-gray-700 cursor-not-allowed': $attrs.disabled,
             'dark:bg-gray-800': !$attrs.disabled && $attrs.readonly === undefined,
             'cursor-not-allowed bg-gray-100 dark:bg-gray-700 focus:shadow-none focus:border-transparent': $attrs.readonly !== undefined,
-            'flex-1': layout === 'horizontal',
-            'rounded-r-none': $slots['after-input'],
           }"
           ref="input"
           class="form-input"
@@ -42,21 +37,17 @@
     </template>
   </FormItem>
 </template>
-<script>
-import { XCircleIcon } from "@zhuowenli/vue-feather-icons";
+
+<script lang="ts">
+import { defineComponent } from "vue";
 import FormItem from "@/components/form/FormItem.vue";
 
-export default {
-  inheritAttrs: false,
+export default defineComponent({
+  name: 'BaseInput',
   components: {
     FormItem,
-    XCircleIcon,
   },
   props: {
-    key: {
-      type: String,
-      default: '0'
-    },
     name: {
       type: String,
       default: '',
@@ -66,16 +57,12 @@ export default {
       default: '',
     },
     type: {
-      type: [String, Number],
+      type: [String],
       default: 'text',
     },
     label: {
       type: String,
       default: '',
-    },
-    layout: {
-      type: String,
-      default: 'vertical'
     },
   },
   emits: ['update:modelValue'],
@@ -92,12 +79,11 @@ export default {
       this.$refs.input.focus()
     },
     onFocus() {
-      if (this.type !== 'number') return
-      if (parseFloat(this.modelValue) === 0) {
-        this.$emit('update:modelValue', '')
+      if (this.type !== 'number') {
+        return
       }
     },
-    onBlur(handleBlur) {
+    onBlur(handleBlur: Function) {
       handleBlur && handleBlur()
       if (this.type !== 'number') {
         return
@@ -106,13 +92,17 @@ export default {
         this.$emit('update:modelValue', 0)
       }
     },
-    onInput(evt, handleChange) {
+    onInput(evt: any, handleChange: Function) {
       this.$emit('update:modelValue', evt.target.value || null)
       handleChange && handleChange(evt)
     },
     clearInput() {
       this.$emit('update:modelValue', '')
     },
-  },
-}
+  }
+  
+})
 </script>
+
+<style scoped>
+</style>
