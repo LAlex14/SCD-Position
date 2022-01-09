@@ -11,7 +11,7 @@
         :key="index"
         :position="m.position"
         :clickable="true"
-        @click="onMarkerClick(m.position)"
+        @click="onMarkerClick(m)"
       />
       <GMapMarker
         v-else
@@ -40,16 +40,25 @@ export default {
       default: 3
     }
   },
+  watch: {
+    center(value) {
+      this.centerCopy = {...value}
+    }
+  },
   data() {
     return {
-      centerCopy: this.center
+      centerCopy: {}
     }
   },
   methods: {
-    onMarkerClick(markerPosition) {
-      this.center = markerPosition;
-      alert('Latitude: ' + markerPosition.lat + ', Longitude: ' + markerPosition.lng)
+    onMarkerClick(marker) {
+      this.centerCopy = marker.position;
+      this.$success('The position was selected');
+      this.$emit('select-pos', marker.id)
     }
+  },
+  created() {
+    this.centerCopy = {...this.center}
   }
 }
 </script>

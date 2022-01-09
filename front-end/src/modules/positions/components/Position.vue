@@ -31,7 +31,7 @@
       <div class="font-bold text-lg mb-1">Actions:</div>
       <div class="space-x-4">
         <BaseButton
-          v-if="$route.name === 'positions'"
+          v-if="$route.name === 'positions' || $route.name === 'positions-by-date'"
           @click="$router.push(`/positions/${position.id}`)"
           variant="secondary"
           label="View"
