@@ -21,7 +21,6 @@ export default {
   },
   async created() {
     // Here load global data if needed
-    console.log(this.$router.options.routes)
     console.log('route', this.$route);
   }
 }

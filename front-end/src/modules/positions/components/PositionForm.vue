@@ -12,16 +12,19 @@
     <div class="flex md:space-x-10 flex-col md:flex-row justify-center items-center flex-wrap">
       <BaseInput
           label="Latitude"
+          class="w-56"
           rules="required|decimal|min_value:-180|max_value:180"
           v-model="position.latitude"
       />
       <BaseInput
           label="Longitude"
+          class="w-56"
           rules="required|decimal|min_value:-180|max_value:180"
           v-model="position.longitude"
       />
       <BaseInput
           label="Date"
+          class="w-56"
           type="date"
           v-model="position.date"
       />

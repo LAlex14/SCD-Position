@@ -5,7 +5,7 @@
     </slot>
     <div class="min-h-error mb-1 mt-1">
       <div>
-        <p :key="error" class="text-sm leading-none text-red-600">
+        <p :key="error" class="text-xs leading-none text-red-600">
           {{ error }}
         </p>
       </div>

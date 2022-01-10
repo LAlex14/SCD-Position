@@ -37,7 +37,7 @@ export default {
     },
     zoom: {
       type: Number,
-      default: 3
+      default: 2
     }
   },
   watch: {
