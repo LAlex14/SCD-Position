@@ -86,6 +86,7 @@ export default {
         };
       }
       console.log(this.markers);
+      this.$success('The positions were successfully generated');
       this.loading = false;
     },
     selectPos(pos, updateCenter) {

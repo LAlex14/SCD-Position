@@ -1,6 +1,7 @@
 <template>
   <div
-    class="border-2 border-gray-400"
+    class="border-2 border-gray-400 rounded"
+    :class="{ 'hover:bg-gray-100' : hover }"
     :key="position.id"
   >
     <div 
@@ -65,6 +66,10 @@ export default {
     itemClass: {
       type: String,
       default: ''
+    },
+    hover: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

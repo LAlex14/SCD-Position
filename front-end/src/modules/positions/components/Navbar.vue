@@ -45,7 +45,7 @@ export default {
           routeName: 'positions'
         },
         {
-          title: 'Positions by date',
+          title: 'Positions on the map',
           routeName: 'positions-by-date'
         },
       ]

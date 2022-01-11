@@ -7,7 +7,7 @@
         class="main-class px-8 py-10 bg-white shadow rounded-lg w-full"
         :class="$route.name"
       >
-        <router-view />
+        <router-view :key="$route.fullPath" />
       </div>
     </main>
   </div>

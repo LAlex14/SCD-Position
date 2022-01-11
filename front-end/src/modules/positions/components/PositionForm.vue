@@ -93,7 +93,7 @@ export default {
         let crd = pos.coords;
         this.position.latitude = crd.latitude;
         this.position.longitude = crd.longitude;
-        this.$success('The position was successfully updated');
+        this.$success(`The position was successfully generated. Accuracy: ±${crd.accuracy} meters`);
         console.log('Your current position is:');
         console.log(`Latitude : ${crd.latitude}`);
         console.log(`Longitude: ${crd.longitude}`);

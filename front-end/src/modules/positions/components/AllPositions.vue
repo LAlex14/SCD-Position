@@ -11,6 +11,7 @@
       :position="position"
       itemClass="flex justify-between"
       @delete-pos="deletePosition"
+      hover
     />
   </div>
   <div v-if="!positions.length">
@@ -43,6 +44,7 @@ export default {
       this.loading = true;
       await positionApi.deletePosition(id);
       await this.getPositions();
+      this.$success('Positions were successfully deleted');
       this.loading = false;
     },
   },
