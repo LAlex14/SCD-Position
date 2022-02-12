@@ -1,25 +1,25 @@
 <template>
   <div
-    class="border-2 border-gray-400 rounded"
+    class="border-2 border-gray-300 rounded"
     :class="{ 'hover:bg-gray-100' : hover }"
     :key="position.id"
   >
     <div 
-      class="py-2 px-4 border-b border-gray-400"
+      class="py-2 px-4 border-b border-gray-300"
       :class="itemClass"
     >
       <span class="font-bold text-lg">Latitude: </span>
       {{ position.latitude }}
     </div>
     <div 
-      class="py-2 px-4 border-b border-gray-400"
+      class="py-2 px-4 border-b border-gray-300"
       :class="itemClass"
     >
       <span class="font-bold text-lg">Longitude: </span>
       {{ position.longitude }}
     </div>
     <div 
-      class="py-2 px-4 border-b border-gray-400"
+      class="py-2 px-4 border-b border-gray-300"
       :class="itemClass"
     >
       <span class="font-bold text-lg">Date: </span>
